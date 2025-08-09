@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edil Alba Ristrutturazioni | Trasformiamo la tua casa con cura</title>
+    <meta name="description" content="Edil Alba è specializzata in ristrutturazioni chiavi in mano. Esperienza, professionalità e un unico referente per il tuo progetto a Milano e dintorni.">
+    <meta name="keywords" content="ristrutturazioni, edilizia, edil alba, chiavi in mano, ristrutturazione bagno, ristrutturazione cucina, milano">
+    
+    <style>
+        /* --- CORE STYLING & BRAND IDENTITY --- */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Lato:wght@400;700&display=swap');
+
+        :root {
+            --terracotta-orange: #E87A4D;
+            --charcoal: #2B2B2B;
+            --warm-off-white: #F9F8F6;
+            --slate-gray: #6D7B87;
+            --light-gray-bg: #F0F0F0;
+            --white: #FFFFFF;
+            --header-height: 80px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--warm-off-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* --- CURSOR TRAIL EFFECT --- */
+        .cursor-trail {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background-color: var(--terracotta-orange);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            transition: transform 0.1s ease-out, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+            opacity: 0.5;
+            box-shadow: 0 0 15px var(--terracotta-orange), 0 0 25px var(--terracotta-orange);
+        }
+
+        body:hover .cursor-trail {
+            opacity: 0.5;
+        }
+
+        a:hover ~ .cursor-trail,
+        button:hover ~ .cursor-trail {
+            transform: translate(-50%, -50%) scale(3);
+            background-color: var(--terracotta-orange);
+            opacity: 0.2;
+            box-shadow: none;
+        }
+
+        /* --- TYPOGRAPHY & GENERAL ELEMENTS --- */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.25rem; }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--slate-gray);
+        }
+
+        a {
+            color: var(--terracotta-orange);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--charcoal);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            overflow: hidden;
+        }
+        
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--terracotta-orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 5px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--terracotta-orange);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(232, 122, 77, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #d16b41;
+            box-shadow: 0 6px 20px rgba(232, 122, 77, 0.5);
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--charcoal);
+            border-color: var(--slate-gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--charcoal);
+            color: var(--white);
+            border-color: var(--charcoal);
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .main-header.scrolled {
+            background-color: rgba(249, 248, 246, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--charcoal);
+        }
+
+        .logo span {
+            color: var(--terracotta-orange);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-nav ul li {
+            margin-left: 35px;
+        }
+
+        .main-nav ul li a {
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .main-nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--terracotta-orange);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav ul li a:hover::after,
+        .main-nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger-menu div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--charcoal);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            position: relative;
+            background-image: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)), url('https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=2127&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding-top: var(--header-height);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--warm-off-white), transparent);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services-overview {
+            text-align: center;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(232, 122, 77, 0.15);
+        }
+
+        .service-card-icon {
+            font-size: 3rem;
+            color: var(--terracotta-orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h4 {
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--slate-gray);
+        }
+        
+        /* --- WHY CHOOSE US SECTION --- */
+        #chi-siamo {
+            background-color: var(--white);
+        }
+        
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .why-us-image {
+            position: relative;
+        }
+
+        .why-us-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .why-us-image::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 100%;
+            height: 100%;
+            background-color: var(--terracotta-orange);
+            opacity: 0.1;
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--terracotta-orange);
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+        
+        .feature-content h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- PORTFOLIO SECTION --- */
+        .portfolio {
+            text-align: center;
+            background-color: var(--light-gray-bg);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 20px;
+            margin-top: 4rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        
+        .portfolio-item:nth-child(1) { grid-column: 1 / 3; }
+        .portfolio-item:nth-child(4) { grid-column: 2 / 4; }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(43, 43, 43, 0.8) 0%, rgba(43, 43, 43, 0) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h4 {
+            color: var(--white);
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+        
+        .portfolio-overlay p {
+            color: rgba(255,255,255,0.8);
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.2s;
+            margin: 0;
+        }
+
+        .portfolio-item:hover .portfolio-overlay h4,
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+        
+        /* --- PROCESS SECTION --- */
+        .process {
+            text-align: center;
+        }
+
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5rem;
+            position: relative;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 12.5%;
+            width: 75%;
+            height: 2px;
+            background-color: #ddd;
+            z-index: -1;
+        }
+
+        .process-step {
+            width: 23%;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 2px solid var(--terracotta-orange);
+            color: var(--terracotta-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover .step-number {
+            background-color: var(--terracotta-orange);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .process-step h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* --- TESTIMONIALS SECTION --- */
+        .testimonials {
+            background-color: var(--charcoal);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            color: var(--white);
+        }
+        
+        .testimonials .section-subtitle {
+            color: var(--terracotta-orange);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            position: relative;
+            overflow: hidden;
+            height: 220px; 
+        }
+
+        .testimonial-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .testimonial-slide.active {
+            opacity: 1;
+        }
+
+        .testimonial-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            max-width: 90%;
+        }
+
+        .testimonial-author {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--terracotta-orange);
+        }
+        
+        /* --- CONTACT SECTION --- */
+        .contact {
+            background-color: var(--light-gray-bg);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            background-color: var(--white);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--terracotta-orange);
+            box-shadow: 0 0 0 3px rgba(232, 122, 77, 0.2);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info-icon {
+            font-size: 1.5rem;
+            color: var(--terracotta-orange);
+            margin-right: 20px;
+            width: 40px;
+            text-align: center;
+        }
+        
+        .contact-info-text strong {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--charcoal);
+        }
+        
+        /* --- FOOTER --- */
+        .main-footer {
+            background-color: var(--charcoal);
+            color: var(--slate-gray);
+            padding: 60px 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-about .logo {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-about p {
+            color: var(--slate-gray);
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+        
+        .footer-widget h4 {
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-widget ul {
+            list-style: none;
+        }
+        
+        .footer-widget ul li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-widget ul li a {
+            color: var(--slate-gray);
+            font-size: 0.9rem;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+        
+        .footer-widget ul li a:hover {
+            color: var(--terracotta-orange);
+            padding-left: 5px;
+        }
+        
+        .social-links a {
+            color: var(--slate-gray);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--terracotta-orange);
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #3a3a3a;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.2rem; }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 300px); }
+            .portfolio-item:nth-child(1) { grid-column: auto; }
+            .portfolio-item:nth-child(4) { grid-column: auto; }
+            .why-us-grid { grid-template-columns: 1fr; }
+            .why-us-image { max-width: 500px; margin: 0 auto 40px auto; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --header-height: 70px; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 60px 0; }
+            
+            .main-header { padding: 0 20px; }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--charcoal);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            }
+            .main-nav.is-open { right: 0; }
+            .main-nav ul { flex-direction: column; text-align: center; }
+            .main-nav ul li { margin: 20px 0; }
+            .main-nav ul li a { color: var(--white); font-size: 1.5rem; }
+
+            .hamburger-menu { display: block; }
+            .hamburger-menu.is-open div:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); background-color: var(--white); }
+            .hamburger-menu.is-open div:nth-child(2) { opacity: 0; }
+            .hamburger-menu.is-open div:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); background-color: var(--white); }
+
+            .hero { text-align: center; }
+            .hero-content { padding: 0 20px; }
+            .hero p { margin: 0 auto 2rem auto; }
+            .process-timeline { flex-direction: column; align-items: center; gap: 40px; }
+            .process-timeline::before { display: none; }
+            .process-step { width: 80%; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .contact-info { margin-top: 40px; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-about p, .footer-widget ul { text-align: center; }
+            .social-links { margin-top: 1rem; }
+        }
+
+        @media (max-width: 500px) {
+            h1 { font-size: 2rem; }
+            .portfolio-grid { grid-template-columns: 1fr; grid-template-rows: repeat(auto-fit, 300px); }
+            .testimonial-quote { font-size: 1.2rem; }
+        }
+
+        /* AOS Animations */
+        [data-aos] {
+            pointer-events: none;
+        }
+        .aos-animate {
+            pointer-events: auto;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
+</head>
+<body>
+
+    <div class="cursor-trail"></div>
+
+    <header class="main-header" id="main-header">
+        <div class="container">
+            <a href="#hero" class="logo">Edil<span>Alba</span></a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#chi-siamo" class="nav-link">Chi Siamo</a></li>
+                    <li><a href="#servizi" class="nav-link">Servizi</a></li>
+                    <li><a href="#portafoglio" class="nav-link">Portafoglio</a></li>
+                    <li><a href="#processo" class="nav-link">Processo</a></li>
+                    <li><a href="#contatti" class="nav-link">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1>La tua casa, trasformata con cura. Ristrutturazioni a Milano.</h1>
+                    <p>Esperienza, professionalità e un unico referente per il tuo progetto chiavi in mano.</p>
+                    <a href="#contatti" class="btn btn-primary">Richiedi un Sopralluogo Gratuito</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="servizi" class="services-overview">
+            <div class="container">
+                <span class="section-subtitle" data-aos="fade-up">I Nostri Servizi</span>
+                <h2 data-aos="fade-up" data-aos-delay="100">Soluzioni complete per ogni esigenza</h2>
+                <div class="services-grid">
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-card-icon"><i class="fa-solid fa-key"></i></div>
+                        <h4>Ristrutturazioni Chiavi in Mano</h4>
+                        <p>Dalla progettazione alla consegna, gestiamo ogni fase del tuo progetto con un unico referente.</p>
+                    </div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-card-icon"><i class="fa-solid fa-bath"></i></div>
+                        <h4>Rifacimento Bagni e Cucine</h4>
+                        <p>Trasformiamo gli spazi più importanti della casa in ambienti funzionali e di design.</p>
+                    </div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="service-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <h4>Pavimenti e Rivestimenti</h4>
+                        <p>Posa professionale di piastrelle, parquet e ogni tipo di rivestimento per pareti e pavimenti.</p>
+                    </div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="service-card-icon"><i class="fa-solid fa-paint-roller"></i></div>
+                        <h4>Tinteggiatura e Cartongesso</h4>
+                        <p>Finiture di pregio, pareti attrezzate e controsoffitti per personalizzare ogni ambiente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chi-siamo">
+            <div class="container">
+                <div class="why-us-grid">
+                    <div class="why-us-image" data-aos="fade-right">
+                        <img src="https://images.unsplash.com/photo-1581092921440-4c3031ba42a0?q=80&w=1974&auto=format&fit=crop" alt="Team di architetti al lavoro">
+                    </div>
+                    <div class="why-us-content" data-aos="fade-left">
+                        <span class="section-subtitle">Perché Scegliere Edil Alba?</span>
+                        <h2>Costruiamo valore, non solo muri.</h2>
+                        <p>La nostra missione è realizzare i sogni dei nostri clienti attraverso un approccio che unisce maestria artigiana, materiali di qualità e una gestione del progetto impeccabile.</p>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fa-solid fa-handshake-simple"></i></div>
+                                <div class="feature-content">
+                                    <h4>Progetti Chiavi in Mano</h4>
+                                    <p>Unico referente, zero stress. Ci occupiamo di tutto, garantendo tempi e costi certi.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fa-solid fa-file-signature"></i></div>
+                                <div class="feature-content">
+                                    <h4>Preventivi Chiari e Gratuiti</h4>
+                                    <p>Trasparenza fin dal primo giorno. Offriamo sopralluoghi e preventivi dettagliati senza impegno.</p>
+                                </div>
+                            </div>
+                             <div class="feature-item">
+                                <div class="feature-icon"><i class="fa-solid fa-star"></i></div>
+                                <div class="feature-content">
+                                    <h4>Qualità e Esperienza</h4>
+                                    <p>Materiali scelti e maestria artigiana. La nostra esperienza è la tua garanzia di un lavoro a regola d'arte.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portafoglio" class="portfolio">
+            <div class="container">
+                <span class="section-subtitle" data-aos="fade-up">Portafoglio Progetti</span>
+                <h2 data-aos="fade-up" data-aos-delay="100">Il nostro lavoro parla per noi</h2>
+                <div class="portfolio-grid" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070&auto=format&fit=crop" alt="Soggiorno moderno ristrutturato">
+                        <div class="portfolio-overlay">
+                            <h4>Appartamento Moderno a Milano</h4>
+                            <p>Ristrutturazione Completa</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1599691443427-5d3c90e2d1fb?q=80&w=1964&auto=format&fit=crop" alt="Bagno di design">
+                        <div class="portfolio-overlay">
+                            <h4>Bagno di Lusso</h4>
+                            <p>Rifacimento Bagno</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1630694857852-3a8069904795?q=80&w=2070&auto=format&fit=crop" alt="Cucina con isola centrale">
+                        <div class="portfolio-overlay">
+                            <h4>Cucina Open Space</h4>
+                            <p>Rifacimento Cucina</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=2070&auto=format&fit=crop" alt="Cucina moderna minimalista">
+                        <div class="portfolio-overlay">
+                            <h4>Attico con Vista</h4>
+                            <p>Ristrutturazione Completa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="processo" class="process">
+            <div class="container">
+                <span class="section-subtitle" data-aos="fade-up">Il Nostro Metodo</span>
+                <h2 data-aos="fade-up" data-aos-delay="100">Il processo "chiavi in mano" semplificato</h2>
+                <div class="process-timeline">
+                    <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-number">01</div>
+                        <h4>Sopralluogo e Preventivo</h4>
+                        <p>Ascoltiamo le tue esigenze e analizziamo lo spazio per fornirti un preventivo chiaro e gratuito.</p>
+                    </div>
+                    <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-number">02</div>
+                        <h4>Progettazione</h4>
+                        <p>Trasformiamo le tue idee in un progetto concreto, definendo ogni dettaglio insieme a te.</p>
+                    </div>
+                    <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-number">03</div>
+                        <h4>Esecuzione Lavori</h4>
+                        <p>Il nostro team di esperti realizza il progetto sotto la nostra attenta supervisione, rispettando i tempi.</p>
+                    </div>
+                    <div class="process-step" data-aos="fade-up" data-aos-delay="500">
+                        <div class="step-number">04</div>
+                        <h4>Consegna</h4>
+                        <p>Il tuo nuovo spazio, pulito, rifinito e pronto per essere vissuto. La tua soddisfazione è il nostro successo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <span class="section-subtitle" data-aos="fade-up">Dicono di Noi</span>
+                <h2 data-aos="fade-up" data-aos-delay="100">La fiducia dei nostri clienti</h2>
+                <div class="testimonial-slider" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-slide active">
+                        <p class="testimonial-quote">“Edil Alba ha trasformato il nostro vecchio bagno in un'oasi di relax. Professionali, puntuali e incredibilmente puliti!”</p>
+                        <p class="testimonial-author">- Marco R., Milano</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-quote">“Affidare la ristrutturazione completa del nostro appartamento a Edil Alba è stata la scelta migliore. Un solo referente per tutto, zero stress!”</p>
+                        <p class="testimonial-author">- Giulia e Luca V., Monza</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-quote">“Preventivo trasparente e rispettato al centesimo. La qualità del lavoro finale ha superato le nostre aspettative. Consigliatissimi.”</p>
+                        <p class="testimonial-author">- Studio Legale Associati</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contatti" class="contact">
+            <div class="container">
+                 <div class="contact-wrapper">
+                     <div class="contact-info" data-aos="fade-right">
+                         <span class="section-subtitle">Contattaci</span>
+                         <h2>Pronto a iniziare il tuo progetto?</h2>
+                         <p>Compila il form o usa i nostri contatti diretti. Saremo felici di offrirti un sopralluogo e un preventivo gratuito per realizzare la casa dei tuoi sogni.</p>
+                         <div class="contact-info-list">
+                             <div class="contact-info-item">
+                                 <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                 <div class="contact-info-text">
+                                     <strong>Indirizzo</strong>
+                                     <p>Via Roma 123, 20121 Milano (MI)</p>
+                                 </div>
+                             </div>
+                             <div class="contact-info-item">
+                                 <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+                                 <div class="contact-info-text">
+                                     <strong>Telefono</strong>
+                                     <p><a href="tel:+39021234567">+39 02 1234567</a></p>
+                                 </div>
+                             </div>
+                             <div class="contact-info-item">
+                                 <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+                                 <div class="contact-info-text">
+                                     <strong>Email</strong>
+                                     <p><a href="mailto:info@edilalbaristrutturazioni.it">info@edilalbaristrutturazioni.it</a></p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="contact-form" data-aos="fade-left">
+                         <form>
+                             <input type="text" name="name" placeholder="Il tuo Nome" required>
+                             <input type="email" name="email" placeholder="La tua Email" required>
+                             <input type="tel" name="phone" placeholder="Numero di Telefono">
+                             <textarea name="message" rows="6" placeholder="Descrivi il tuo progetto..." required></textarea>
+                             <button type="submit" class="btn btn-primary">Invia la Richiesta</button>
+                         </form>
+                     </div>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#hero" class="logo">Edil<span>Alba</span></a>
+                    <p>Trasformiamo spazi con passione e professionalità. Dalla piccola ristrutturazione al progetto chiavi in mano, siamo il tuo partner di fiducia.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-widget">
+                    <h4>Link Utili</h4>
+                    <ul>
+                        <li><a href="#chi-siamo">Chi Siamo</a></li>
+                        <li><a href="#servizi">Servizi</a></li>
+                        <li><a href="#portafoglio">Portafoglio</a></li>
+                        <li><a href="#processo">Il Nostro Processo</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h4>Servizi Principali</h4>
+                    <ul>
+                        <li><a href="#servizi">Chiavi in Mano</a></li>
+                        <li><a href="#servizi">Rifacimento Bagni</a></li>
+                        <li><a href="#servizi">Rifacimento Cucine</a></li>
+                        <li><a href="#servizi">Tinteggiatura</a></li>
+                        <li><a href="#servizi">Pavimenti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h4>Contatti</h4>
+                    <ul>
+                        <li><p>Via Roma 123, Milano</p></li>
+                        <li><a href="mailto:info@edilalbaristrutturazioni.it">info@edilalba.it</a></li>
+                        <li><a href="tel:+39021234567">+39 02 1234567</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Edil Alba Ristrutturazioni. Tutti i diritti riservati. P.IVA 12345678901</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // --- AOS INITIALIZATION ---
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // --- STICKY HEADER ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- HAMBURGER MENU ---
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenu = document.getElementById('main-nav');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('is-open');
+            navMenu.classList.toggle('is-open');
+        });
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('is-open');
+                navMenu.classList.remove('is-open');
+            });
+        });
+
+        // --- ACTIVE NAV LINK ON SCROLL ---
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', navHighlighter);
+
+        function navHighlighter() {
+            let scrollY = window.pageYOffset;
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 150;
+                let sectionId = current.getAttribute('id');
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelector('.main-nav a[href*=' + sectionId + ']').classList.add('active');
+                } else {
+                    document.querySelector('.main-nav a[href*=' + sectionId + ']').classList.remove('active');
+                }
+            });
+        }
+        
+        // --- TESTIMONIAL SLIDER ---
+        const slides = document.querySelectorAll('.testimonial-slide');
+        let currentSlide = 0;
+        const slideInterval = setInterval(nextSlide, 5000);
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // --- CURSOR TRAIL EFFECT ---
+        const cursorTrail = document.querySelector('.cursor-trail');
+        let trailElements = [];
+        const trailLength = 15; 
+        
+        for (let i = 0; i < trailLength; i++) {
+            let el = document.createElement('div');
+            el.classList.add('cursor-trail');
+            document.body.appendChild(el);
+            trailElements.push(el);
+            el.style.display = 'none';
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            let x = e.clientX;
+            let y = e.clientY;
+            
+            trailElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.display = 'block';
+                    el.style.left = `${x}px`;
+                    el.style.top = `${y}px`;
+                    el.style.opacity = 0.5 - index * 0.03;
+                    el.style.transform = `scale(${1 - index * 0.05})`;
+                }, index * 20); // Delay for each element
+            });
+        });
+        
+        // Remove main cursor dot from this complex trail implementation
+        const mainCursor = document.querySelector('.cursor-trail');
+        if (mainCursor) mainCursor.style.display = 'none';
+
+    </script>
+
+</body>
+</html>
